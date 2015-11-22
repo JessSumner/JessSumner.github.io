@@ -5,6 +5,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: unlikelyrubyist
 github_username:  JessSumner
+linkedin_username: jessica-sumner-33874530
 
 # Build settings
 markdown: kramdown

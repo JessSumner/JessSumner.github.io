@@ -1,0 +1,13 @@
+.post {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.post-title {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.post-content {
+  text-align: justify;
+}

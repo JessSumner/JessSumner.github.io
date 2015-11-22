@@ -1,0 +1,26 @@
+.home-body {
+  @include span-columns(6);
+  @include shift(3);
+  $link-color: $dark-purple;
+  $link-color-hover: $purple;
+
+  .post-list {
+
+    li {
+      border-bottom: 1px dotted;
+      margin-bottom: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $link-color;
+      &:hover {
+        color: $link-color-hover;
+      }
+    }
+
+    p {
+      text-align: justify;
+    }
+  }
+}
