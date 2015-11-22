@@ -1,6 +1,6 @@
 // Typography
-$base-font-family: $helvetica;
-$heading-font-family: $base-font-family;
+$base-font-family: 'Droid Serif', $helvetica;
+$heading-font-family: 'Allerta Stencil', $base-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -16,10 +16,14 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$purple: #c934a6;
+$blue: #6374c1;
+$green: #81d200;
+$beige: #eef1dc;
+
 
 // Font Colors
 $base-font-color: $dark-gray;
