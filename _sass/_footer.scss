@@ -9,15 +9,26 @@ footer {
   padding-top: 6px;
   min-height: $footer-height;
 
-  a {
-    color: $footer-color;
-    text-decoration: none;
-    &:focus, &:hover {
-      color: $footer-color-hover;
-    }
+  .footer-title {
+    font-size: 1.25em;
+    text-align: center;
   }
-  
-  ul {
-    float: right;
+
+  .social-media {
+    text-align: center;
+    padding-bottom: 5px;
+
+    li {
+      display: inline-block;
+    }
+
+    a {
+      color: $footer-color;
+      text-decoration: none;
+      padding: 0 5px;
+      &:focus, &:hover {
+        color: $footer-color-hover;
+      }
+    }
   }
 }

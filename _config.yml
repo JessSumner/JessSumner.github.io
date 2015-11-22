@@ -1,6 +1,5 @@
 # Site settings
 title: Unlikely Rubyist
-email: jess.r.sumner@gmail.com
 description: From Chemist to Mom and now a Ruby on Rails Developer. Here's what I am learning and how.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
