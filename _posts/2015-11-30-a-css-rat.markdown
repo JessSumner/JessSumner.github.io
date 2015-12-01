@@ -1,0 +1,59 @@
+---
+layout: post
+title: A CSS rat
+date: 2015-11-30 20:00:00
+---
+
+Over the last few days I have been working through some CSS tutorials. Up until now I have used CSS to move objects around my pages, change colors and fonts and maybe add a border or two. I had wondered about making shapes but I didn't think CSS was a tool for this. This tutorial taught me how to make a robot using just CSS and my horizons have been broadened. In this blog post I will explain how I drew a cartoon rat using my new knowledge.
+
+Using CSS my plan was to style several `<div>` elements to make separate parts of the body. The two obvious `<div>` elements would be for the torso and noggin (body and head may have got confusing given that an html file uses these as tags).
+
+In order to see a `<div>` it's height, width and background or border must be defined. The code below displays a brown square.
+
+{% highlight html %}
+.triangle {
+  background: #735921;
+  height: 200px;
+  width: 200px:
+}
+{% endhighlight %}
+
+A triangle, however, is better than a square for a rat's torso. In order to make a triangle border properties are used. 
+
+The code becomes:
+
+{% highlight html %}
+.triangle {
+  border-left: 100px solid transparent;
+  border-top: 200px solid #735921;
+  border-right: 100px solid transparent; 
+  height: 0;
+  width: 0;
+}
+{% endhighlight %}
+
+The object that is displayed with this code is the `border-top`. The `<div>` itself has no height or width. The `border-top` has a height of 200px and is brown. The `border-left` and `border-right` each have a width of 100px and are transparent. The whole object is still 200 x 200px and this can be seen by inspecting the element. Borders have diagonal corners and as the left and right borders are transparent the object that is visible is a triangle.
+
+![Highlighting side borders](/assets/20151130_css_rat/pink_side_borders.jpg)
+
+Here `border-left` and `border-right` have been colored pink in order to highlight them. The point of the triangle on the bottom edge is where the `<div>` is.
+
+![Div with width](/assets/20151130_css_rat/div_with_width.jpg)
+
+Giving the .triangle a width of 100px and keeping all other properties as defined above yields a quadrilateral. The top edge is 300px, the bottom is 100px and the left and right sides are sloped inwards. 
+
+At this point the torso was a quadrilateral and the noggin a triangle. This doesn't make a rat. Border-radius is a property that curves the corners of objects. Like other properties it can be defined on particular corners. This can be used to transform a square into a circle. Border-radius was used here to curve the top edge of the rat's torso and noggin.
+
+![Torso and noggin](/assets/20151130_css_rat/torso_and_noggin.png)
+
+The next features defined were the rat's ears. These followed the same template as the torso. Each ear, although indentical, was defined separately so that they could be placed individually. They were defined within the noggin so that they would move with the noggin if desired.
+
+The eyes, nose, whiskers and tails were created by styling keyboard characters.Black periods were used for the eyes, a larger, pink period for the nose and angle brackets for the whiskers. Again all these were defined within the noggin object. A large, brown tilde, defined in its own `<div>` was used for the tail.
+
+The last property used was `position: relative`. This allowed objects to be moved around the screen relative to the top and left edges. A negative `top` value moves the object up towards the top of the screen. Likewise a negative `left` value moves the object towards the left edge. This allowed me to assemble all the components of my rat. `z-index` allows for objects to be placed in front of or behind other objects. It represents the z-axis running in to and out of the screen. A `z-index` of 1 puts an object in front and a -1 pushes the object back. All the facial features of the rat have a `z-index` of 1. Therefore they are in front of the noggin which by default has a `z-index` of 0.
+
+![Final rat](/assets/20151130_css_rat/rat.png)
+
+Finally all the components were moved into a `<div class="rat">`. Following the reasoning of the noggin, this was so the rat was one object which could be sized and moved as needed.
+
+Feel free to take a look at the code for this project on [GitHub](https://github.com/JessSumner/css-rat). 
