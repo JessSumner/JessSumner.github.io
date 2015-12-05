@@ -57,3 +57,5 @@ The last property used was `position: relative`. This allowed objects to be move
 Finally all the components were moved into a `<div class="rat">`. Following the reasoning of the noggin, this was so the rat was one object which could be sized and moved as needed.
 
 Feel free to take a look at the code for this project on [GitHub](https://github.com/JessSumner/css-rat). 
+
+I still have lots to learn and my rat is far from perfect, but it's been a fun start.
