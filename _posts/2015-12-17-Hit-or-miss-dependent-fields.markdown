@@ -45,7 +45,7 @@ Being new to javascript and very skeptical I put all blame on the semicolon I ha
 
 Chuffed at fixing the problem I moved on. However this phenomenon kept happening. After multiple attempts with and without the semicolon I realised that the form was loading correctly on a page refresh but not when following the route from the homepage. 
 
-The solution: Turbolinks.
+The problem: Turbolinks. Turbolinks is a gem which is included when a new Rails app is generated. When page links are followed Turbolinks allows the page to be loaded without all the requests being made to the server. Turbolinks gains all of its information from the page which is currently loaded, therefore not making the same requests over and over and reducing the load speed. Cmd-r is a hard reload, Turbolinks is not involved in this request, therefore all files are requested from the server and the page loads correctly.
 
 {% highlight javascript %}
 
@@ -60,6 +60,8 @@ $(document).on('ready page:load', function() {
 {% endhighlight %}
 
 The first example here is the original code which I modified to write the second example. The second example reads, for the document on every page load peform this function. In the original it was not specifying every page load and therefore the form was only loading correctly on a page refresh.
+
+An alternative solution is to remove Turbolinks from the application. Without Turbolinks the first code example would have worked.
 
 Problem fixed, I am thrilled with how the form turned out. I learnt a lot more than I expected to by creating this dependency and finding this to be a useful change I have submitted a pull request to the author of the gem.
 

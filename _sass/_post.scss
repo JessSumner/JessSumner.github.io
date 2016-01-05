@@ -17,13 +17,14 @@
   }
 
   .highlight {
+    background-color: $highlight-color;
     padding: 0 5px;
-    background-color: $highlight-color; 
+    overflow: scroll;
   }
 
   img {
-    max-height: 300px;
     display: block;
     margin: 0 auto;
+    max-height: 300px;
   }
 }
