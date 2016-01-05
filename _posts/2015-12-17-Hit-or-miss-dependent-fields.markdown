@@ -37,7 +37,7 @@ After restarting the server it is time to add the dependencies to the form. I de
 
 Here is the code for one of my questions and its dependent questions.
 
-Ctrl-s and Ctrl-r localhost:3000 and "Ta-da". If I answer "yes", I get to see more questions otherwise I continue on.
+Ctrl-s and Cmd-r localhost:3000 and "Ta-da". If I answer "yes", I get to see more questions otherwise I continue on.
 
 I use [hound](https://github.com/thoughtbot/hound) by thougtbot as a style guide and when I create a pull request for my projects I immediately get an onslaught of violations. I find hound particularly useful as it keeps my code style consistent. It has also taught me lots of good practices - however that is for another blog post! Back to dependent fields.... On pushing my code to GitHub, hound informed me that I was missing a semicolon in my jQuery. I immediately corrected this violation and moved on. A little while later I decided to show off my new form so I followed the route from the homepage and much to my horror I could see all my questions. 
 
