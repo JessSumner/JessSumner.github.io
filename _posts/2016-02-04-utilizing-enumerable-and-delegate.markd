@@ -1,0 +1,56 @@
+---
+layout: post
+title: Utilizing enumerable and delegate
+date: 2016-02-04 15:47:00
+---
+
+This week I created a feature for my Any Rat Rescue project to display all their flyers and newsletters. My initial work up of this feature created a logic heavy controller. Several new ideas were suggested to me and in implementing these changes I learnt so much. My resulting solution is a tiny controller and a small, flexible object which contains most of the logic originally defined in the controller. This refactor incorporates the single responsability principle, object dependencies and the open-closed principle.
+
+My logic-heavy controller.
+
+What I am acheiving in this controller is enormous. I am retrieving contents of a known folder and returning them in a desired format and assigning them to an instance variable which can be used in the view. 
+
+
+
+I should also add that I am currently reading through Practical Object Oriented Designs in Ruby by Sandi Metz. Reading chapter 3 I immediately saw problems in my original code.
+
+I have two objects a NewsletterController and a NewsletterFinder. In this code there are a lot of dependencies between these two objects. NewsletterController knows that there is a NewsletterFinder object and it knows two methods that can be called on the NewsletterFinder object. I feel there is little to be done regarding the first dependency however there is no need for the NewsletterController to know the method names.
+
+Step 1 - passing an argument not calling a method
+In the NewsletterController request a new instance of NewsletterFinder and pass an argument. The argument represents the folder name which holds the documents desired by the view.
+
+This requires the NewsletterFinder object to have an initialize method which accepts an argument. 
+
+This change results in the NewsletterController having less knowledge about the NewsletterFinder class which reduces dependencies. It also removes all responsability of the NewsletterFinder class to know what the folder name is. This means changes can be made to the folder name without needing to change anything within the NewsletterFinder class.
+
+Step 2 - reducing responsabilities down to one
+The NewsletterFinder has two methods `flyers` and `news`. These methods have two responsabilities, they define a variable which gets passed through the method chain and they remove the .pdf from the file name. 
+
+Fortunately the Step 1 means the variable assignment can be cut out as that is now being passed in from the controller. All that is left is two copies of the same logic which can be made into one method called `newsletter_list`.
+
+Step 3 - undefined method error each
+Making these changes results in an error when I refresh the view. Undefined method each for `@flyers.each`. Each is a method which is included in the Enumerable Module. The array class includes the Enumerable Module and therefore if you call .each on an array you get the expected behaviour. The NewsletterFinder object is not an array, nor does it include the Enumerable Module. `@flyers` is an instance of NewsletterFinder and hence it does not know how to respond to `each`.
+
+Step 4 - including the Enumerable module
+The Enumerable Module can be included into any class.
+
+{% highlight ruby %}
+class NewsletterFinder
+  require Enumerable
+end
+
+However this isn't enough, you also have to def each. Up until receiving the error in Step 3 I had taken `each` for granted. My first thought was "How do you define each?". After some reading and thinking each simply returns each value in a collection. In my example the collections I am interested in are the contents of the folders I am passing in.
+
+This was an incredibly frustrating realisation for me. In my mind defining each would require me writing out all the file names which is precisily what I was avoiding by writing the methods in NewsletterFinder.
+
+{% highlight ruby %}
+  def each
+    yield jul-15.pdf
+    yield dec-15.pdf
+    ..
+  end
+{% endhighlight %}
+8) require Enumerable then requires you to define each. Having each defined allows other methods such as map to be used.
+9) In this example each needs to yield each flyer or news document. Instead of defining it myself I delegate the responsability to an object I know to be an array newsletter_list.
+10) @newsletter_list has been added as everytime .each is called on an instance of NewsletterFinder such as on @flyers it will run through the whole chain of methods. Defining this instance variable stores it so that the first time it is called all the methods will run, however the second time there is a memory.
+11) Making methods in the NewsletterFinder private. The reason for making the NewsletterFinder class was to remove the responsability from other objects. The NewsletterFinder's sole purpose is to retrieve files from a given file for other objects to then use. Instead of calling one of the methods in the chain only the object NewsletterFinder should be called.
