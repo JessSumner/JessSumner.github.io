@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Utilizing enumerable and delegate
-date: 2016-02-04 15:47:00
+date: 2016-02-06 15:47:00
 ---
 
 This week I created a feature for my Any Rat Rescue project to display their
