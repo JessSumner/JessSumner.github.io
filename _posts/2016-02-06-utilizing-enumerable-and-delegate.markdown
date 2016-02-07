@@ -140,8 +140,18 @@ end
 However we still have to define `each`. Up until receiving the error in Step 3
 I had taken `each` for granted. My first thought was "How do you define each?".
 After some reading and thinking `each` (at least in my example) simply returns
-each value in a collection. In my example the collections I am interested in
+each value in a collection.  In my example the collections I am interested in
 are the contents of the folders I am passing in.
+
+The blogs I read to come to this point are linked here:
+[Treehouse](https://teamtreehouse.com/community/can-someone-help-me-understand-
+when-and-why-to-use-enumerators-and-enumerable),
+[Ruby Monk](http://rubymonk.com/learning/books/4-ruby-primer-ascent/chapters/44
+-collections/lessons/96-enumerators-and-enumerables),
+[Practicing Ruby](https://practicingruby.com/articles/building-enumerable-and-
+enumerator) and
+[Robert Qualls](http://www.sitepoint.com/guide-ruby-collections-iii-enumerable-
+enumerator/).
 
 This was an incredibly frustrating realization for me. In my mind defining each
 would require me writing out all the file names which is precisily what I was
@@ -158,7 +168,7 @@ avoiding by writing the logic in `NewsletterFinder`.
 Step 5 - delegate to the rescue
 
 In my example `newsletter_list` is an array. Therefore `newsletter_list` has
-each already defined. So we can delegate the responsability of defining each to
+each already defined. So we can [delegate](http://apidock.com/rails/Module/delegate) the responsability of defining each to
 `newsletter_list`.
 
 {% highlight ruby %}
