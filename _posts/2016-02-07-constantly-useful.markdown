@@ -86,7 +86,8 @@ end
 
 {% endhighlight %}
 
-Here the `%w` splits the following list on whitespace and forms an array of strings. Giving us the desired array of attributes.
+Here the `%w` splits the following list on whitespace and forms an array of
+strings. Giving us the desired array of attributes.
 
 In the view this constant can be called as so.
 
@@ -100,6 +101,9 @@ In the view this constant can be called as so.
 </table>
 {% endhighlight %}
 
-In order to access the constant from a file other than where it is defined, the constant name is prefixed by its class. 
+In order to access the constant from a file other than where it is defined, the
+constant name is prefixed by its class. 
 
-Using a constant gave me the solution I hoped would be possible. The view is small and simple. I am not repeating myself. Also should the form change in the future the mailer itself will not need to change.
+Using a constant gave me the solution I hoped would be possible. The view is
+small and simple. I am not repeating myself. Also should the form change in the
+future the mailer itself will not need to change.
